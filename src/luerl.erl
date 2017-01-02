@@ -312,6 +312,8 @@ encode(F, St) when is_function(F, 1) ->
     {{function, F1}, St};
 encode({userdata,Data}, St) ->
     luerl_emul:alloc_userdata(Data, St);
+encode({userdata,Data,Meta}, St) ->
+    luerl_emul:alloc_userdata(Data, Meta, St);
 encode(_, _) -> error(badarg).			%Can't encode anything else
 
 %% decode_list([LuerlTerm], State) -> [Term].
